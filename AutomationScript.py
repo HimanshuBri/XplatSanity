@@ -316,11 +316,13 @@ if __name__ == "__main__":
 		metalog = " ************** LoadBalancer Vm should create with vnet ******************* \t"
 		retryLoad1("azure vm create " + config['VM_NAME'] + " " + " --virtual-network-name "+ config['NETWORK_NAME'] + " -l " + config['LOCATION'] + " " + config['IMAGE_NAME'] + " " + config['USER_NAME'] + " " + config['PASSWORD'] ,logfile,metalog)		
 		metalog = " ************** LoadBalancer Add ******************* \t"
-		retryLoad1("node bin/azure service internal-load-balancer add " + config['VM_NAME'] + " -t " + config['SUBNET'] + " -n " + config['INTERNAL_LB_NAME'] ,logfile,metalog)		
+		retryLoad1("azure service internal-load-balancer add " + config['VM_NAME'] + " -t " + config['SUBNET'] + " -n " + config['INTERNAL_LB_NAME'] ,logfile,metalog)		
 		metalog = " ************** LoadBalancer List ******************* \t"
-		retryLoad1("node bin/azure service internal-load-balancer list " + config['VM_NAME'] ,logfile,metalog)	
+		retryLoad1("azure service internal-load-balancer list " + config['VM_NAME'] ,logfile,metalog)	
+		metalog = " ************** Loadbalancer Set ******************* \t"
+		retryLoad1("azure service internal-load-balancer set " + config['VM_NAME'] + config['INTERNAL_LB_NAME_UPDATE'] + " -t " + config['SUBNET'] + " -a " + config['SUBNETIP'] ,logfile,metalog)		
 		metalog = " ************** LoadBalancer Delete ******************* \t"
-		retryLoad1("node bin/azure service internal-load-balancer delete " + config['VM_NAME'] + " -n " + config['INTERNAL_LB_NAME'] + " --quiet " ,logfile,metalog)
+		retryLoad1("azure service internal-load-balancer delete " + config['VM_NAME'] + " -n " + config['INTERNAL_LB_NAME'] + " --quiet " ,logfile,metalog)
 		metalog = "************** Azure LoadBalancer VM Delete ******************* \t"
 		retryLoad1("azure vm delete " + config['VM_NAME'] + " -b --quiet " ,logfile,metalog)
 		metalog = "************** Azure Account Clear ******************* \t"
@@ -564,7 +566,9 @@ if __name__ == "__main__":
 		metalog = " ************** Loadbalancer Add ******************* \t"
 		execute_command_with_flag("node bin/azure service internal-load-balancer add " + config['VM_NAME'] + " -t " + config['SUBNET'] + " -n " + config['INTERNAL_LB_NAME'] ,logfile,config['LOADBALANCER_ADD_FLAG'],metalog)		
 		metalog = " ************** Loadbalancer List ******************* \t"
-		execute_command_with_flag("node bin/azure service internal-load-balancer list " + config['VM_NAME'] ,logfile,config['LOADBALANCER_LIST_FLAG'],metalog)	
+		execute_command_with_flag("node bin/azure service internal-load-balancer list " + config['VM_NAME'],logfile,config['LOADBALANCER_LIST_FLAG'],metalog)	
+		metalog = " ************** Loadbalancer Set ******************* \t"
+		execute_command_with_flag("node bin/azure service internal-load-balancer set " + config['VM_NAME'] + config['INTERNAL_LB_NAME_UPDATE'] + " -t " + config['SUBNET'] + " -a " + config['SUBNETIP']  ,logfile,config['LOADBALANCER_SET_FLAG'],metalog)		
 		metalog = " ************** Loadbalancer Delete ******************* \t"
 		execute_command_with_flag("node bin/azure service internal-load-balancer delete " + config['VM_NAME'] + " -n " + config['INTERNAL_LB_NAME'] + " --quiet " ,logfile,config['LOADBALANCER_DELETE_FLAG'],metalog)
 		metalog = "************** Azure LoadBalancer VM Delete ******************* \t"

@@ -58,7 +58,7 @@ config = {
 "EXTN_VERSION":"1.1 ",
 "EXTN_FILE":"foo.json",
 #************** VM NETWORK VARIABLES *****************
-"NETWORK_NAME":"newnet",
+"NETWORK_NAME":"googlednssvnet",
 
 #************** VM IMAGE VARIABLES *****************
 "VM_IMAGE_NAME" : "XplatTestImage",
@@ -122,6 +122,8 @@ config = {
 #LOADBALANCER
 "SUBNET" : "Subnet-1" ,
 "INTERNAL_LB_NAME" : "internalLBName" ,
+"SUBNETIP" : "subnetip" ,
+"INTERNAL_LB_NAME_UPDATE" : "internalLBNameUpdate" ,
 
 #************** FLAG VALUES **************************
 
@@ -238,6 +240,7 @@ config = {
 "LOADBALANCER_CREATE_FLAG" : "0" ,
 "LOADBALANCER_ADD_FLAG" : "0" ,
 "LOADBALANCER_LIST_FLAG" : "0" ,
+"LOADBALANCER_SET_FLAG" : "0" ,
 "LOADBALANCER_DELETE_FLAG" : "0" ,
 "VM_LOADBALANCER_DEL_FLAG" : "0"
 
