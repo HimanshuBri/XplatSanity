@@ -86,7 +86,7 @@ if __name__ == "__main__":
 	from config import config
 	logfile = create_file("" + config['LOG_FILE'] + "")
 	logerr = create_file("" + config['LOG_FILERR'] + "")
-	if(config['GLOBAL_FLAG'] == "1"):
+	if(config['GLOBAL_FLAG'] == "0"):
 		logfile.write("************** Test Summary Report **************** \n")
 		metalog = "************** NPM CACHE CLEAR **************** \t" 
 		retryLoad1("npm cache clear",logfile,metalog)		
@@ -123,7 +123,7 @@ if __name__ == "__main__":
 		metalog = "************** Azure Account Affinity Group Create ******************* \t"		
 		retryLoad1("azure account affinity-group create -l "+config['LOCATION']+ " -e "+config['AFFINITY_GRP_LABEL']+ " -d "+config['AFFINITY_GRP_DESC']+ " " +config['AFFINITY_GRP_NAME'] ,logfile,metalog)		
 		metalog = "************** Azure Account Affinity Group Show ******************* \t"		
-		retryLoad1("azure account affinity-group show " +config['AFFINITY_GRP_NAME'] ,logfile,metalog)		
+		retryLoad1("azure account affinity-group show " +config['AFFINITY_GRP_NAME'] ,logfile,metalog)			
 
 		metalog = "************** Azure Account Storage List ******************* \t"
 		retryLoad1("azure storage account list ",logfile,metalog)		
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 		metalog = "************** Azure Vm Extension Get ************\t"
 		retryLoad1("azure vm extension get "+config['VM_NAME'],logfile,metalog)
 		metalog = "************** Azure Vm Extension Set ************\t"
-		retryLoad1("azure vm extension set "+config['VM_NAME'] +" "+config['EXTN_NAME']+" "+config['EXTN_PUB_NAME']+" "+config['EXTN_VERSION'] +" "+" -C "+config['EXTN_FILE'],logfile,metalog)
+		retryLoad1("azure vm extension set "+config['VM_NAME'] +" "+config['EXTN_NAME']+" "+config['EXTN_PUB_NAME']+" "+config['EXTN_VERSION'] +" "+" -c "+config['EXTN_FILE'],logfile,metalog)
 		
 		metalog = "************** Azure Disk List with VMName ************\t"
 		retryLoad1("azure vm disk list "+config['VM_NAME'],logfile,metalog)
@@ -168,7 +168,7 @@ if __name__ == "__main__":
 
 		metalog = "************** PIP Commands ****************************** \t"
 		metalog = "************** VM Create with PIP ****************************** \t"
-		retryLoad1("azure vm create "+ "-i " + config['PUBLICIPNAME'] +config['VM_WIN_PIP'] +" "+config['WIN_IMAGE_NAME'] +" testuser "+config['PASSWORD']+" -l " +config['LOCATION'],logfile,metalog)
+		retryLoad1("azure vm create "+ "-i " + config['PUBLICIPNAME'] +config['VM_WIN_PIP'] +" "+config['WIN_IMAGE_NAME']+" testuser "+config['PASSWORD']+" -l " +config['LOCATION'],logfile,metalog)
 
 		metalog = "************** PIP List ****************************** \t"
 		retryLoad1("azure vm public-ip list "+config['VM_WIN_PIP'],logfile,metalog)
@@ -287,8 +287,7 @@ if __name__ == "__main__":
 		metalog = "************** Azure VM reserved-ip Create ******************* \t"
 		retryLoad1("azure vm delete "+config['VM_RIP_NAME'] + " -b --quiet ",logfile,metalog)
 		
-		metalog = "************** Azure Network Delete ******************* \t"
-		retryLoad1("azure network vnet delete "+config['NETWORK_NAME'] + " --quiet ",logfile,metalog)
+		
 		metalog = "************** Azure VM Delete ******************* \t"
 		retryLoad1("azure vm delete "+config['VM_NAME'] + " -b --quiet ",logfile,metalog)
 		metalog = "************** Azure Windows VM Delete ******************* \t"
@@ -305,8 +304,7 @@ if __name__ == "__main__":
 		retryLoad1("azure vm image delete "+config['TARGET_IMG_NAME'],logfile,metalog)
 		metalog = "************** Azure VM Disk Delete ******************* \t"
 		retryLoad1("azure vm disk delete "+config['VM_DISK_IMAGE_NAME'],logfile,metalog)
-		metalog = "************** Azure Affinity Group Delete ******************* \t"
-		retryLoad1("azure account affinity-group delete "+config['AFFINITY_GRP_NAME'] + " --quiet",logfile,metalog)
+		
 		
  		metalog = "**********************Azure VM Docker Create********************************* \t"	
  		retryLoad1("azure vm docker create "+ config['VM_DOCKER_NAME'] + " "+ config['VM_DOCKER_IMG_NAME'] +" "+ config['USER_NAME'] +" "+ config['PASSWORD'] +" -l " +config['LOCATION']+" " + config['CERT_FILE'] + " " + config['VM_DOCKER_PORT'] ,logfile,metalog)
@@ -319,17 +317,23 @@ if __name__ == "__main__":
 		retryLoad1("azure service internal-load-balancer add " + config['VM_NAME'] + " -t " + config['SUBNET'] + " -n " + config['INTERNAL_LB_NAME'] ,logfile,metalog)		
 		metalog = " ************** LoadBalancer List ******************* \t"
 		retryLoad1("azure service internal-load-balancer list " + config['VM_NAME'] ,logfile,metalog)	
-		metalog = " ************** Loadbalancer Set ******************* \t"
+		metalog = " ************** LoadBalancer Set ******************* \t"
 		retryLoad1("azure service internal-load-balancer set " + config['VM_NAME'] + config['INTERNAL_LB_NAME_UPDATE'] + " -t " + config['SUBNET'] + " -a " + config['SUBNETIP'] ,logfile,metalog)		
 		metalog = " ************** LoadBalancer Delete ******************* \t"
 		retryLoad1("azure service internal-load-balancer delete " + config['VM_NAME'] + " -n " + config['INTERNAL_LB_NAME'] + " --quiet " ,logfile,metalog)
 		metalog = "************** Azure LoadBalancer VM Delete ******************* \t"
 		retryLoad1("azure vm delete " + config['VM_NAME'] + " -b --quiet " ,logfile,metalog)
+		
+		metalog = "************** Azure Network Delete ******************* \t"
+		retryLoad1("azure network vnet delete "+config['NETWORK_NAME'] + " --quiet ",logfile,metalog)
+		metalog = "************** Azure Affinity Group Delete ******************* \t"
+		retryLoad1("azure account affinity-group delete "+config['AFFINITY_GRP_NAME'] + " --quiet",logfile,metalog)
+		
 		metalog = "************** Azure Account Clear ******************* \t"
 		retryLoad1("azure account clear --quiet",logfile,metalog)
 		
 		
-	if(config['GLOBAL_FLAG'] == "0"):
+	if(config['GLOBAL_FLAG'] == "1"):
 		logfile.write("************** Test Summary Report **************** \n")
 		metalog = "************** NPM CACHE CLEAR **************** \t" 
 		execute_command_with_flag("npm cache clear",logfile,config['NPM_CLEAR_FLAG'],metalog)	

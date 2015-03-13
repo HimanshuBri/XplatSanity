@@ -1,6 +1,6 @@
 config = {
 
-"PUBLISHSETTINGS_FILE" : "CollaberaInteropTest-12-8-2014-credentials.publishsettings",
+"PUBLISHSETTINGS_FILE" : "CollaberaInteropTest-3-12-2015-credentials.publishsettings",
 
 #************** ACCOUNT VARIABLES *****************
 
@@ -38,9 +38,9 @@ config = {
 "LOGINPASSWORD" : "LOGINPASSWORD",
 
 "IMAGE_NAME" :"TEstImage",
-"WIN_IMAGE_NAME" :"VMImage1", #diskname is obtained from vm image list and choose the one with windows
+"WIN_IMAGE_NAME" :"VMImage", #diskname is obtained from vm image list and choose the one with windows
 "VM_VNET_IMAGE_NAME" :"XplatTestImage",
-"VM_COMM_IMAGE_NAME" :"Some community image name", #browse http://vmdepot.msopentech.com/ select a vm anc click on deployment button
+"VM_COMM_IMAGE_NAME" :"vmdepot-36259-1-1", #browse http://vmdepot.msopentech.com/ select a vm anc click on deployment button
 "VM_DOCKER_IMG_NAME" : "TestLinuxImage",
 
 "USER_NAME" :"XplatTestUser",
@@ -64,27 +64,27 @@ config = {
 "VM_IMAGE_NAME" : "XplatTestImage",
 "VM_IMAGE_LABEL" : "XplatTestImageLabel",
 "VM_IMAGE_DESC" : '"Test Offshore Image"',
-"VM_DISK_SOURCE_PATH" :"https://acsforsdk2.blob.core.windows.net/disks/ToDelete.vhd", #mediauri obtained from vm disk show diskname(diskname is obtained from vm disk list and choose the one with linux as os)
-"IMAGE_BLOB_URL" : "http://acsforsdk2.blob.core.windows.net/vm-images/ToDelete",		#http://StoragecontainerUrl/vm-images/OffshoreXplatTestImage002"
+"VM_DISK_SOURCE_PATH" :"https://acsforsdk2.blob.core.windows.net/disks/OffshoreXplTest.vhd", #mediauri obtained from vm disk show diskname(diskname is obtained from vm disk list and choose the one with linux as os)
+"IMAGE_BLOB_URL" : "http://acsforsdk2.blob.core.windows.net/vm-images/ToDelete15",		#http://StoragecontainerUrl/vm-images/OffshoreXplatTestImage002"
 "TARGET_IMG_NAME" : "XplatTestTargetImg",
 
 #************** VM DISK IMAGE VARIABLES *****************
-"VM_DISK_IMAGE_NAME" :"ToDelete",
+"VM_DISK_IMAGE_NAME" :"ToDelete15",
 "VM_DISK_NEW_IMAGE_NAME" :"XplatTestDiskNewImage",
 "VM_DISK_LABEL" : "XplatTestDisklbl",
 "VM_DISK_NEW_LABEL" : "XplatTestDiskNewlbl",
 "VM_DISK_DESC" : '"Test Offshore Disk"',
-"DISK_IMAGE_BLOB_URL": "https://acsforsdk2.blob.core.windows.net/disks/TestVMImage-datadisk-0-2014-11-17.vhd", 			#http://StoragecontainerUrl/disks/OffshoreXplatTestDisk"
-"VM_DISK_ATTACH_BLOB_URL": "VM_DISK_ATTACH_BLOB_URL", 	#http://StoragecontainerUrl/disks/disknewupload.vhd"
+"DISK_IMAGE_BLOB_URL": "https://acsforsdk2.blob.core.windows.net/disks/ToDelete15", 			#http://StoragecontainerUrl/disks/OffshoreXplatTestDisk"
+"VM_DISK_ATTACH_BLOB_URL": "https://acsforsdk2.blob.core.windows.net/disks/VM_DISK_ATTACH_BLOB_URL.vhd", 	#http://StoragecontainerUrl/disks/disknewupload.vhd"
 
 #************** PIP COMMANDS ****************************
-"VM_WIN_PIP" : "VMeToDelete",
+"VM_WIN_PIP" : "VMeToDelPIP",
 "PUBLICIPNAME" : "TestIP2",
 "PUBLICIPSET" : "VMPUBLICIPSET",
 
 
 #************** ACL COMMANDS ****************************
-"VM_WIN_ACL" : "VMeToDelete",
+"VM_WIN_ACL" : "VMeToDelACL",
 "ENDPOINT" : "tcp-21-23",
 "REMOTESUBNET" : "23.99.18.228/31",
 "ORDER" : "3",
@@ -123,7 +123,7 @@ config = {
 "SUBNET" : "Subnet-1" ,
 "INTERNAL_LB_NAME" : "internalLBName" ,
 "SUBNETIP" : "subnetip" ,
-"INTERNAL_LB_NAME_UPDATE" : "internalLBNameUpdate" ,
+"INTERNAL_LB_NAME_UPDATE" : "internalLBName" ,
 
 #************** FLAG VALUES **************************
 
@@ -161,7 +161,7 @@ config = {
 "VM_VNET_CREATE_FLAG" : "0" ,
 "VM_SIZE_CREATE_FLAG" : "0" ,
 "VM_CUSTOMDATA_CREATE_FLAG" : "0" ,
-"VM_COMM_IMG_CREATE_FLAG" : "0" ,
+"VM_COMM_IMG_CREATE_FLAG" : "1" ,
 "VM_SSH_FLAG" : "0" ,
 "VM_EXPORT_FLAG" : "0" ,
 "VM_CAPTURE_FLAG" : "0" ,
